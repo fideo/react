@@ -1,10 +1,17 @@
 
+describe('Pruebas en <DemoComponent />', () => { 
+  
+  test('Esta es una prueba que no debería fallar', () => {
 
+    //1. Inicializacion
+    const message1 = 'Hola Mundo';
 
-test('Esta es una prueba que no debería fallar', () => {
+    //2. Estimulo
+    const message2 = message1.trim();
 
-  if ( 0 === 1 ) {
-    throw new Error('No se puede dividir por cero');
-  }
+    //3. Observación (Observar el comportamiento)
+    expect( message1 ).toBe( message2 );
+  
+  })
 
-})
+});
