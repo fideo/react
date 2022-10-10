@@ -1,4 +1,5 @@
 const { getHeroeById, getHeroesByOwner } = require("../../src/base-pruebas/08-imp-exp");
+const { default: heroes } = require("../../src/data/heroes");
 
 describe('Probar en 08-imp-exp', () => { 
   test('getHeroeById debe retornar un heroe por id', () => { 
@@ -33,11 +34,50 @@ describe('Probar en 08-imp-exp', () => {
 
   test('getHeroesByOwner debe retornar un arreglo con los héroes de DC', () => { 
     
-    const heroe = 'Batman'
+    const owner = 'DC';
 
-    const heroeByOwner = getHeroesByOwner();
-    console.log(heroeByOwner);
+    const heroeByOwner = getHeroesByOwner(owner);
+    //heroes.filter((heroe) => heroe.owner === owner);
+    //console.log(heroeByOwner);
+    //console.log(getHeroesByOwner(owner).length);
+    
+    //expect(heroeByOwner.length).toEqual(getHeroesByOwner(owner).length); // Yo lo hice así
+    expect(heroeByOwner.length).toEqual(3); // el profesor lo hizo así.
 
+    //esta es la opción que se me ocurrió a mi y al profesor; esto está hardcodeado
+    expect(heroeByOwner).toEqual([
+      { id: 1, name: 'Batman', owner: 'DC' },
+      { id: 3, name: 'Superman', owner: 'DC' },
+      { id: 4, name: 'Flash', owner: 'DC' }
+    ]);
+
+    //esta opción es la correcta ya que si los valores de data/heroes.js cambian no rompe mi test
+    expect(heroeByOwner).toEqual(heroes.filter( (heroe) => heroe.owner === owner ));
+
+
+   });
+
+  test('getHeroesByOwner debe de retornar un arreglo con los héroes de Marvel', () => { 
+    
+    const owner = 'Marvel'
+
+    const heroeByOwner = getHeroesByOwner(owner);
+    //heroes.filter((heroe) => heroe.owner === owner);
+    //console.log(heroeByOwner);
+    //console.log(getHeroesByOwner(owner).length);
+    
+    //expect(heroeByOwner.length).toEqual(getHeroesByOwner(owner).length);
+    expect(heroeByOwner.length).toEqual(2);
+
+    //esta es la opción que se me ocurrió a mi y al profesor; esto está hardcodeado
+    expect(heroeByOwner).toEqual([
+      { id: 2, name: 'Spiderman', owner: 'Marvel' },
+      { id: 5, name: 'Wolverine', owner: 'Marvel' }
+    ]);
+
+    //esta opción es la correcta ya que si los valores de data/heroes.js cambian no rompe mi test
+    expect(heroeByOwner).toEqual(heroes.filter((heroe)=>heroe.owner===owner));
+  
    });
 
  });
