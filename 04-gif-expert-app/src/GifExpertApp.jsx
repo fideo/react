@@ -1,15 +1,16 @@
 //rafc Para crear un funcional component
 import { useState } from "react";
 import { AddCategory } from "./components/AddCategory";
+import { GifGrid } from "./components/GifGrid";
 
 export const GifExpertApp = () => {
 
-  const [categories, setCategories] = useState([ 'One Punch', 'Dragon Ball' ]);
+  const [categories, setCategories] = useState([ 'One Punch' ]);
 
   const onAddCategory = ( newCategory ) => {
-    // Valorant
-    // categories.push(newCategory);
-    // console.log(newCategory)
+    //TODO resolver el ingresos CaseSensitive .toLowerCase() comparando 
+    if (categories.includes(newCategory)) return;
+
     setCategories( [ newCategory, ...categories ] );
 
   }
@@ -26,14 +27,15 @@ export const GifExpertApp = () => {
      />
 
     {/* Listado de Gif */}
-    <ol>
-      { categories.map( category => {
-        return <li key={  category }> { category } </li>
-        }) 
-      }
+    { 
+        categories.map( ( category ) => (
+          <GifGrid 
+              key={ category } 
+              category={ category } />
+        ))
+    }
       {/* <li>ABC</li>
       <li>123</li> */}
-    </ol>
       {/* Gif Item */}
 
     </>
