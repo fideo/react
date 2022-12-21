@@ -7,14 +7,14 @@ export const CounterWithCustomHook = () => {
     <>
       <h1>Counter With Hook: {counter}</h1>
       <hr />
-      <button className="btn btn-primary" onClick={increment}>
-        +1
+      <button className="btn btn-primary" onClick={ () => increment(2) }>
+        +2
       </button>
       <button className="btn btn-secondary" onClick={reset}>
         Reset
       </button>
-      <button className="btn btn-primary" onClick={decrement}>
-        -1
+      <button className="btn btn-primary" onClick={ () => decrement(2) }>
+        -2
       </button>
     </>
   );
