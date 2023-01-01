@@ -7,7 +7,9 @@ export const Character = ({isLoading, imageUrl, fullName, title}) => {
 
     useLayoutEffect(() => {
 
-      console.log( pRef.current.getBoundingClientRect() );
+      const {height, width} = pRef.current.getBoundingClientRect();
+      setBoxSize({height, width});
+
 
     }, [imageUrl, fullName, title])
 
