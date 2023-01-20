@@ -13,8 +13,6 @@ export const Padre = () => {
         [],
     );
     
-    
-
 
     return (
         <div>
