@@ -8,7 +8,8 @@ export const MultipleCustomHooks = () => {
   const {data, isLoading, hasError} = useFetch('https://thronesapi.com/api/v2/Characters/'+counter);
 
   //console.log({data, isLoading, hasError});
-  const {imageUrl, fullName, title} = !!data && data;
+  //const {imageUrl, fullName, title} = !!data && data; //este es el original lo modifico en la linea de abajo para que me funciones el test 
+  const {imageUrl, fullName, title} = !!data && data[0];
 
 
 
